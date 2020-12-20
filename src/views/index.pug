@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Home
+        link(rel="stylesheet" href="/css/tailwind.css")
+    body    
+        h1.text-center.text-3xl You are authenticated
+        form(method="POST" action="/logout")
+            button(type="submit" class="w-20 text-white p-2 rounded-md bg-red-500 hover:bg-red-600 block mx-auto font-medium") Log out

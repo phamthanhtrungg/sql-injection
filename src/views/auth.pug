@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Auth
+        link(rel="stylesheet" href="/css/tailwind.css")
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js" integrity="sha512-REb0S2epbS0XtS28ifNa1haxmTZigXjB+Tx5IHCvXZndWB2RL431Vt1qONzFoe0dPwA8WGow+xxkQwhVr44nRg==" crossorigin="anonymous"></script>
+        script(src="/js/auth.js" type="text/javascript" defer="true")
+    body
+        main(class="w-screen min-h-screen bg-blue-100 border" id="app")
+            div.flex.flex-col.items-center.justify-center
+                h1(class="text-4xl text-center font-bold mt-10") Auth
+                form(class="mt-4 border rounded-md bg-white w-96 mx-auto p-3 mt-10" action="/auth" method="post" noValidate @submit.prevent="handleSubmit")
+                    div(class="my-3 text-red-500 text-sm font-medium" v-if="error.length !== 0")
+                        span {{error}}                    
+                    div.flex.justify-between
+                        label 
+                            input(type="radio" name="isSafe" value="unsafe" v-model="isSafe") 
+                            span.ml-3 Unsafe
+                        label 
+                            input(type="radio" name="isSafe" value="safe" v-model="isSafe") 
+                            span.ml-3 safe
+                    input(type="email" required name="email" placeholder="Email" class="w-full border p-3 rounded-md mt-3" v-model="email")
+                    input(type="password" required name="password" placeholder="Password" class="w-full border p-3 rounded-md mt-3" v-model="password")
+                    button(type="submit" class="mt-3 w-full rounded-md bg-blue-500 hover:bg-blue-600 p-3 text-white text-2lg font-medium") Log me in
+                    button(type="button" class="mt-3 w-full rounded-md bg-green-500 hover:bg-green-600 p-3 text-white text-2lg font-medium" @click="toggleHint") Show hint
+                    div(id="editor" class="h-40 w-full mt-3" v-if="showHint")
