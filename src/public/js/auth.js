@@ -46,7 +46,6 @@ LIMIT 1
           this.error = parsedRes.message;
         } else {
           window.location.href = "/";
-          console.log(window.location.href);
         }
       });
     },

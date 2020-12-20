@@ -12,7 +12,6 @@ const postAuth = async (req, res) => {
       pg.query(
         `select * from users where email='${email}' and password='${password}' limit 1`
       ).then((queryRes) => {
-        console.log(queryRes);
         if (queryRes.rowCount === 0) {
           return res
             .status(400)
