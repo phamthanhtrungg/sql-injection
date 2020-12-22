@@ -7,7 +7,6 @@ Vue.createApp({
       editor.setTheme("ace/theme/monokai");
       editor.setFontSize(14);
       editor.session.setMode("ace/mode/sql");
-      editor.setReadOnly(true);
     }
     if (editor) {
       editor.setValue(
