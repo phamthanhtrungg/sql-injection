@@ -12,12 +12,13 @@ const postAuth = async (req, res) => {
       pg.query(
         `select * from users where email='${email}' and password='${password}' limit 1`
       ).then((queryRes) => {
+        console.log(queryRes);
         if (queryRes.rowCount === 0) {
           return res
             .status(400)
             .json({ message: "Invalid username or password" });
         } else {
-          req.session.user = queryRes.rows[0];
+          req.session.user = queryRes.rows > 0 && queryRes.rows[0];
           return res.status(200).json({ message: "Successfully authed" });
         }
       });
