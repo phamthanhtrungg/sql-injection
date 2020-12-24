@@ -10,9 +10,7 @@ Vue.createApp({
     }
     if (editor) {
       editor.setValue(
-        `
-SELECT * FROM users WHERE email='${this.email}' AND password='${this.password}' LIMIT 1
-    `,
+        `SELECT * FROM users WHERE email='${this.email}' AND password='${this.password}' LIMIT 1`,
         0
       );
     }
